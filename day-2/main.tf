@@ -1,4 +1,9 @@
-resource "aws_vpc" "my_vpc" {
+provider "aws" {
+    region = ap-south-1
+    profile = "dev"
+} 
+ 
+ resource "aws_vpc" "my_vpc" {
     cidr_block = var.vpc_cidr
     tags = {
         Name = "my_vpc"
@@ -115,7 +120,7 @@ resource "aws_instance" "public_instance" {
     vpc_security_group_ids = [aws_security_group.sg.id]
     subnet_id = aws_subnet.public_subnet.id 
     associate_public_ip_address = true
-    user_data = file("/root/terraform-b33/day-2-vpc/user_data.sh")
+    user_data = file("/root/terraform-practice/day-2/user_data.sh")
 
     root_block_device {
         volume_size = var.volume_size
