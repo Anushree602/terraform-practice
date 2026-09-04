@@ -1,6 +1,6 @@
 provider "aws" {
-  region = "ap-south-1"
-  profile = "dev"
+  region = "var.aws_region"
+  profile = "var.aws_profile"
 }
 
 data "aws-vpc" "default" {
@@ -89,17 +89,17 @@ resource "aws_security_group" "sg" {
   #CREATE A AUTOSCALING GROUP
 resource "aws_launch_template" "lt" {
     name_prefix = "web-template"
-    image_id = "ami-01a00762f46d584a1"
-    key_name = "med-erp-key"
-    instance_type = "t3.micro"
+    image_id = "var.ami_id"
+    key_name = "var.key_name"
+    instance_type = "var.instance_type"
     vpc_security_group_ids = [aws_security_group.sg.id]
-    user_data = filebase64("/root/terraform/day-3/user_data.sh")
+    user_data = filebase64("var.user_data_file")
 }
 
 resource "aws_autoscaling_group" "asg" {
-    desired_capacity     = 2
-    max_size             = 3
-    min_size             = 1
+    desired_capacity     = "var.desired_capacity"
+    max_size             = "var.max_size"
+    min_size             = "var.min_size"
     vpc_zone_identifier  = data.aws_vpc.default.subnets
     launch_template {
         id      = aws_launch_template.lt.id
