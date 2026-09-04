@@ -3,7 +3,7 @@ provider "aws" {
   profile = "var.aws_profile"
 }
 
-data "aws-vpc" "default" {
+data "aws_vpc" "default" {
   default = true
 }
 
@@ -63,7 +63,7 @@ resource "aws_security_group" "sg" {
     }
   }
 
-  resource "aws-lb" "my_lb" {
+  resource "aws_lb" "my_lb" {
     name               = "my-lb"
     internal           = false
     load_balancer_type = "application"
