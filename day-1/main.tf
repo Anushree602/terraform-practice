@@ -6,9 +6,9 @@ data "aws_vpc" "default" {
     default = true
 }
 
-resource "aws_security_group" "sg" {
-  name        = "my_security_group"
-  description = "my_security_group"
+resource "aws_security_group" "my-sg" {
+  name        = "my_sg"
+  description = "my_sg"
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
