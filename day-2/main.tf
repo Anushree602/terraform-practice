@@ -119,6 +119,7 @@ resource "aws_instance" "public_instance" {
     count  = 2
     vpc_security_group_ids = [aws_security_group.sg.id]
     subnet_id = aws_subnet.public_subnet.id 
+    associate_public_ip_address = true
     user_data = file("/root/terraform-practice/day-2/user_data.sh")
 
     root_block_device {
@@ -137,7 +138,6 @@ resource "aws_instance" "private_instance" {
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.sg.id]
     subnet_id = aws_subnet.private_subnet.id 
-    associate_public_ip_address = false
     user_data = file("/root/terraform-practice/day-2/user_data.sh")
     tags = {
         Name = "private_instance"
