@@ -116,9 +116,8 @@ resource "aws_instance" "public_instance" {
     ami = var.ami
     instance_type = var.instance_type
     key_name = var.key_name 
-    count  = 2
     vpc_security_group_ids = [aws_security_group.sg.id]
-    subnet_id = aws_subnet.public_subnet.id 
+    subnet_id = aws_subnet.public_subnet.id
     associate_public_ip_address = true
     user_data = file("/root/terraform-practice/day-2/user_data.sh")
 
