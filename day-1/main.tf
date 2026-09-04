@@ -41,7 +41,7 @@ resource "aws_instance" "ec2" {
   ami                    = var.ami
   instance_type          = var.instance_type
   key_name               = var.key_name
-  vpc_security_group_ids = [aws_security_group.sg.id]
+  vpc_security_group_ids = [aws_security_group.my-sg.id]
 
   user_data = file("/root/terraform-practice/day-1/user_data.sh")
 
