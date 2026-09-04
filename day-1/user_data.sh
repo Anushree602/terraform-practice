@@ -1,5 +1,5 @@
 #!/bin/bash
-dnf update -y
-dnf install nginx -y
+apt update -y
+apt install nginx -y
 systemctl start nginx 
 systemctl enable nginx 
