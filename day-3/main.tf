@@ -99,7 +99,7 @@ resource "aws_launch_template" "lt" {
     key_name = var.key_name
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.sg.id]
-    user_data = filebase64("/root/terraform/day-3.user_data.sh")
+    user_data = filebase64("/root/terraform-practice/day-3/user_data.sh")
 }
 
 resource "aws_autoscaling_group" "asg" {
