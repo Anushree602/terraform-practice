@@ -74,7 +74,7 @@ resource "aws_security_group" "sg" {
     internal           = false
     load_balancer_type = "application"
     security_groups    = [aws_security_group.sg.id]
-    subnets            = data.aws_vpc.default.subnets
+    subnets            = data.aws_subnets.default.ids
 
     tags = {
       Name = "my_lb"
@@ -106,7 +106,7 @@ resource "aws_autoscaling_group" "asg" {
     desired_capacity     = "var.desired_capacity"
     max_size             = "var.max_size"
     min_size             = "var.min_size"
-    vpc_zone_identifier  = data.aws_vpc.default.subnets
+    vpc_zone_identifier  = data.aws_subnets.default.ids
     launch_template {
         id      = aws_launch_template.lt.id
         version = "$Latest"
