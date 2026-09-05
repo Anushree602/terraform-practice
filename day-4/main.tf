@@ -12,7 +12,7 @@ module "vpc" {
 
 module "ec2" {
   source = "./modules/ec2"
-  ami = "ami-0c02fb55956c7d316"
+  ami = "ami-01a00762f46d584a1"
   instance_type = "t3.micro"
   key_name = "med-erp-key"
   sg_id = module.vpc.security_group_id
