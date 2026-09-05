@@ -51,7 +51,7 @@ resource "aws_subnet" "private_subnet" {
       vpc_id = aws_vpc.my_vpc.id
       route {
         cidr_block = "0.0.0/0"
-        gateway_id = aws_igw.my_igw.id  
+        gateway_id = aws_internet_gateway.my_igw.id
       }
         tags = {
             Name = "public_rt"
