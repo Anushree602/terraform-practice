@@ -1,6 +1,6 @@
 provider "aws" {
-  region = "var.aws_region"
-  profile = "var.aws_profile"
+  region = var.aws_region
+  profile = var.aws_profile
 }
 
 data "aws_vpc" "default" {
@@ -95,9 +95,9 @@ resource "aws_security_group" "sg" {
   #CREATE A AUTOSCALING GROUP
 resource "aws_launch_template" "lt" {
     name_prefix = "web-template"
-    image_id = "var.ami_id"
-    key_name = "var.key_name"
-    instance_type = "var.instance_type"
+    image_id = var.ami_id
+    key_name = var.key_name
+    instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.sg.id]
     user_data = filebase64(var.user_data_file)
 }
