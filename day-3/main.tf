@@ -6,6 +6,12 @@ provider "aws" {
 data "aws_vpc" "default" {
   default = true
 }
+data "aws_subnets" "default" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
+}
 
 #create a security group
 resource "aws_security_group" "sg" {
@@ -71,7 +77,7 @@ resource "aws_security_group" "sg" {
     subnets            = data.aws_vpc.default.subnets
 
     tags = {
-      Name = "my-lb"
+      Name = "my_lb"
     }
     
   }
@@ -93,7 +99,7 @@ resource "aws_launch_template" "lt" {
     key_name = "var.key_name"
     instance_type = "var.instance_type"
     vpc_security_group_ids = [aws_security_group.sg.id]
-    user_data = filebase64("var.user_data_file")
+    user_data = filebase64(var.user_data_file)
 }
 
 resource "aws_autoscaling_group" "asg" {
