@@ -3,7 +3,7 @@ resource "aws_instance" "public_instance" {
    instance_type = "t3.micro"
    key_name      = "med-erp-key"
    count        = 2
-   vpc_security_group_ids = ["sg-0e49c59ffa4c69279"]
+   vpc_security_group_ids = ["sg-0e7fe9ac18d6d1d74"]
    tags = {
      Name = "public_instance"
    }
