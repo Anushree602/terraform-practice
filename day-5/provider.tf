@@ -11,6 +11,6 @@ terraform{
         region = "ap-south-1"
         profile = "dev"
         use_lockfile = true
-        shared_credentials_file = "C:/Users/Admin/.aws/credentials"
+        shared_credentials_file = ["/root/.aws/credentials"]
     }
 }
