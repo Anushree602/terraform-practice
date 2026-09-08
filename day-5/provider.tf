@@ -10,7 +10,7 @@ terraform{
         key    = "terraform.tfstate"
         region = "ap-south-1"
         profile = "dev"
-        use_localfile = true
+        use_lockfile = true
         shared_credentials_file = "C:/Users/Admin/.aws/credentials"
     }
 }
