@@ -4,7 +4,7 @@ resource "aws_instance" "example" {
   key_name               = "med-erp-key"
   count                  = 2
   vpc_security_group_ids = ["sg-0375dca1d23a927cd"]
-  
+
   provisioner "file" {
     source      = "hello.txt"
     destination = "/home/ubuntu/hello.txt"
@@ -23,10 +23,10 @@ resource "aws_instance" "example" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get update",
-      "sudo apt-get install httpd -y",
-      "sudo systemctl start httpd",
-      "sudo systemctl enable httpd"
+    "sudo apt-get update",
+    "sudo apt-get install apache2 -y",
+    "sudo systemctl start apache2",
+    "sudo systemctl enable apache2"
     ]
   }
 }
