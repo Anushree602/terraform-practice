@@ -3,8 +3,8 @@ resource "aws_instance" "example" {
   ami                    = "ami-01a00762f46d584a1"
   key_name               = "med-erp-key"
   count                  = 2
-  vpc_security_group_ids = ["sg-0e7fe9ac18d6d1d74"]
-
+  subnet_id              = "subnet-08a60be5a846abf93"
+vpc_security_group_ids = [" vpc-034557982824d4277"]
   provisioner "file" {
     source      = "hello.txt"
     destination = "/home/ubuntu/hello.txt"
