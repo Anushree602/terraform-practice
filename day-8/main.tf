@@ -4,6 +4,7 @@ resource "aws_instance" "example" {
   key_name               = "med-erp-key"
   count                  = 2
   vpc_security_group_ids = ["sg-0375dca1d23a927cd"]
+  
   provisioner "file" {
     source      = "hello.txt"
     destination = "/home/ubuntu/hello.txt"
