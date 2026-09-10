@@ -24,9 +24,9 @@ resource "aws_instance" "example" {
   provisioner "remote-exec" {
     inline = [
     "sudo apt-get update",
-    "sudo apt-get install apache2 -y",
-    "sudo systemctl start apache2",
-    "sudo systemctl enable apache2"
+    "sudo apt-get install nginx -y",
+    "sudo systemctl start nginx",
+    "sudo systemctl enable nginx"
     ]
   }
 }
